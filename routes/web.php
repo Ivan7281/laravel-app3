@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\AuctionsController;
 use App\Http\Controllers\RatesController;
 
@@ -19,7 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/demian/cv', [\App\Http\Controllers\ResumeController::class, 'index'])
+Route::get('/demian/cv', [ResumeController::class, 'index'])
     ->name('demian');
 
 Route::resource('Auctions', AuctionsController ::class);
