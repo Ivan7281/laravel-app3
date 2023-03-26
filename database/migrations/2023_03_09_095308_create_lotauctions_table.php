@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('lotauctions', function (Blueprint $table) {
             $table->id();
             $table->string('name_lot', 50);
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('start_date', 50);
+            $table->string('end_date', 50);
             $table->float('starting_price');
             $table->timestamps();
         });

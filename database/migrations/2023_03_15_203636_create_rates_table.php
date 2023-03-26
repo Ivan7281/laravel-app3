@@ -15,16 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_customer');
             $table->float('rate_price');
-
-            $table->bigInteger('rate_id')
-                ->unsigned()
-                ->nullable(false);
-
             $table->timestamps();
-
-            $table->foreign('rate_id')
-                ->references ('id')
-                ->on('lotauctions');
         });
     }
 

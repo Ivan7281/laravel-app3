@@ -10,8 +10,17 @@ class Lotauction extends Model
 {
     use HasFactory;
 
-    public function rate(): BelongsTo
+    protected $fillable = [
+        'name_lot',
+        'start_date',
+        'end_date',
+        'starting_price',
+        'rate_id'
+    ];
+
+    public function rates(): BelongsTo
     {
         return $this->belongsTo(Rate::class);
     }
+
 }

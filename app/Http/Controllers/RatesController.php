@@ -9,8 +9,7 @@ class RatesController extends Controller
 {
     public function index()
     {
-        $rates = Rate::all();
-        return $rates;
+
     }
 
     public function create()

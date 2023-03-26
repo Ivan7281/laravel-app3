@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lotauction;
+use App\Models\Rate;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AuctionsController extends Controller
@@ -15,12 +17,20 @@ class AuctionsController extends Controller
 
     public function create()
     {
-        return view('auctions.create');
+        $rate_list = Rate::all();
+        return view('auctions.create', ['rate_list' => $rate_list]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-
+        $lot = Lotauction::create([
+            'name_lot' => $request->input('name_lot'),
+            'start_date' => $request->input('start_date'),
+            'end_date' => $request->input('end_date'),
+            'starting_price' => $request->input('starting_price'),
+            'rate_id' => $request->input('rate_id'),
+        ]);
+        return \redirect(route('auctions.index'));
     }
 
     public function show(string $id)

@@ -10,7 +10,7 @@ class Rate extends Model
 {
     use HasFactory;
 
-    public function lotauction(): HasMany
+    public function lotauctions(): HasMany
     {
         return $this->hasMany(Lotauction::class);
     }

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResumeController;
 use App\Http\Controllers\AuctionsController;
-use App\Http\Controllers\RatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,5 +22,5 @@ Route::get('/', function () {
 Route::get('/demian/cv', [ResumeController::class, 'index'])
     ->name('demian');
 
-Route::resource('Auctions', AuctionsController ::class);
-Route::resource('Rates', RatesController ::class);
+Route::resource('auctions', AuctionsController ::class);
+
