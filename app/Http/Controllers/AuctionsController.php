@@ -39,59 +39,32 @@ class AuctionsController extends Controller
     public function show(string $id): View
     {
         $lot = Lotauction::find($id);
-        if (!isset($lot))
-        {
-            return abort(404);
-        }
-        return view(
-            'auctions.show',
-            ['lot' => $lot]
-        );
+        return view('auctions.show', ['lot' => $lot]);
     }
 
-    public  function  edit(string $id)
+    public  function  edit(string $id): View
     {
+        $rate_list = Rate::all();
         $lot = Lotauction::find($id);
-        if (!isset($lot))
-        {
-            return abort(404);
-        }
-        return view(
-            'auctions.edit',
-            ['lot' => $lot]
-        );
+        return view('auctions.edit', ['lot' => $lot, 'rate_list' => $rate_list]);
     }
 
     public function update(Request $request, string $id): View
     {
         $lot = Lotauction::find($id);
-        if (!isset($lot))
-        {
-            return abort(404);
-        }
         $lot->name_lot = $request->input('name_lot');
         $lot->start_date = $request->input('start_date');
         $lot->end_date = $request->input('end_date');
         $lot->starting_price = $request->input('starting_price');
         $lot->rate_id = $request->input('rate_id');
         $lot->save();
-        return view(
-            'auctions.update',
-            ['lot' => $lot]
-        );
+        return view('auctions.update', ['lot' => $lot]);
     }
 
     public function destroy(string $id): View
     {
         $lot = Lotauction::find($id);
-        if (!isset($lot))
-        {
-            return abort(404);
-        }
         $lot->delete();
-        return view(
-            'auctions.destroy',
-            ['lot' => $lot]
-        );
+        return view('auctions.destroy', ['lot' => $lot]);
     }
 }
