@@ -10,7 +10,14 @@
 </head>
 <body>
 <div class="flex flex-col min-h-screen bg-sky-100">
-    @yield('content')
+    <header>
+        @yield('header')
+    </header>
+    <main class="flex-grow">
+        <div class="w-full max-w-2xl mx-auto">
+            @yield('content')
+        </div>
+    </main>
 </div>
 </body>
 </html>

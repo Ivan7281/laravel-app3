@@ -25,7 +25,7 @@ class LotRequest extends FormRequest
             "name_lot" => "required|string|max:30",
             "start_date" => "required|string|max:10",
             "end_date" => "required|string|max:10",
-            "starting_price" => "required|numeric|max:10"
+            "starting_price" => "required|numeric"
         ];
     }
 }
