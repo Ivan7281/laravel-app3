@@ -1,12 +1,13 @@
 @extends('layout.app')
 @section('content')
-    <div>
-        <h1> Show lot </h1>
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
+        <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl flex-grow"
+        > Show lot </h1>
     </div>
 
-    <div>
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 col-auto" >
         <table>
-            <tr>
+            <tr class="bg-slate-50 border-b border-slate-200">
                 <th>id</th>
                 <th>Lot Name</th>
                 <th>Start Date</th>
@@ -14,7 +15,7 @@
                 <th>Starting Price</th>
                 <th>Rates</th>
             </tr>
-                <tr>
+                <tr class="bg-slate-50 border-b border-slate-200 ">
                     <td>{{ $lot->id }}</td>
                     <td>{{ $lot->name_lot }}</td>
                     <td>{{ $lot->start_date }}</td>

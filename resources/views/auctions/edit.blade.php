@@ -1,39 +1,57 @@
 @extends('layout.app')
 @section('content')
     <div>
-        <h1>Edit lot</h1>
+        <h1 class="flex h-10 items-center justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl flex-auto">Edit lot</h1>
     </div>
     <div>
-        <form action="{{URL::to('auctions') .'/' . $lot->id }}" method="POST">
+        <form action="{{URL::to('auctions') .'/' . $lot->id }}" method="POST"
+              class="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-md my-10 px-1.5 w-full">
             @csrf
 
             <input type="hidden" name="_method" value="PATCH">
-            <label for="name_lot">Lot Name</label>
-            <input required name="name_lot" value="{{ $lot->name_lot }}"/>
+            <label for="name_lot" class="block text-sm font-medium text-slate-700">Lot Name</label>
+            <input required name="name_lot" value="{{ $lot->name_lot }}" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
+            @error('name_lot')
+            <div>{{ $message }}</div>
+            @enderror
             <br/>
 
-            <label for="start_date">Start Date</label>
-            <input required name="start_date" value="{{ $lot->start_date}}"/>
+            <label for="start_date" class="block text-sm font-medium text-slate-700">Start Date</label>
+            <input required name="start_date" value="{{ $lot->start_date}}" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
+            @error('start_date')
+            <div>{{ $message }}</div>
+            @enderror
             <br/>
 
-            <label for="end_date">End Date</label>
-            <input required name="end_date" value="{{ $lot->end_date }}"/>
+            <label for="end_date" class="block text-sm font-medium text-slate-700">End Date</label>
+            <input required name="end_date" value="{{ $lot->end_date }}" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
+            @error('end_date')
+            <div>{{ $message }}</div>
+            @enderror
             <br/>
 
-            <label for="starting_price">Starting Price</label>
-            <input required name="starting_price" value="{{ $lot->starting_price }}"/>
+            <label for="starting_price" class="block text-sm font-medium text-slate-700">Starting Price</label>
+            <input required name="starting_price" value="{{ $lot->starting_price }}" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"/>
+            @error('starting_price')
+            <div>{{ $message }}</div>
+            @enderror
             <br/>
 
-            <label for="rate_id">Rates</label>
-            <select required name="rate_id" >
-                <option>please select rate</option>
+            <label for="rate_id" class="block text-sm font-medium text-slate-700">Rates</label>
+            <select required name="rate_id" class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500">
                 @foreach($rate_list as $rate_item)
                     <option value="{{ $rate_item->id }}">{{ $rate_item->name_customer }}</option>
                 @endforeach
             </select>
             <br/>
 
-            <button type="submit">Edit</button>
+            <button type="submit" class="button text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >Edit</button>
 
         </form>
     </div>

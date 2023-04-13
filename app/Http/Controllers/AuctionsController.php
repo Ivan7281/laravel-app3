@@ -6,6 +6,7 @@ use App\Models\Lotauction;
 use App\Models\Rate;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Http\Requests\LotRequest;
 
 class AuctionsController extends Controller
 {
@@ -21,7 +22,7 @@ class AuctionsController extends Controller
         return view('auctions.create', ['rate_list' => $rate_list]);
     }
 
-    public function store(Request $request): View
+    public function store(LotRequest $request): View
     {
         /* [
             'name_lot' => $request->input('name_lot'),
@@ -30,6 +31,7 @@ class AuctionsController extends Controller
             'starting_price' => $request->input('starting_price'),
             'rate_id' => $request->input('rate_id'),
         ] */
+        $validatedLot = $request->validated();
         $lot = Lotauction::create(
             $request->all(['name_lot', 'start_date', 'end_date', 'starting_price', 'rate_id'])
         );
@@ -49,8 +51,9 @@ class AuctionsController extends Controller
         return view('auctions.edit', ['lot' => $lot, 'rate_list' => $rate_list]);
     }
 
-    public function update(Request $request, string $id): View
+    public function update(LotRequest $request, string $id): View
     {
+        $validatedLot = $request->validated();
         $lot = Lotauction::find($id);
         $lot->name_lot = $request->input('name_lot');
         $lot->start_date = $request->input('start_date');
