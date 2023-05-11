@@ -10,6 +10,11 @@ class Rate extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name_customer',
+        'rate_price'
+    ];
+
     public function lotauctions(): HasMany
     {
         return $this->hasMany(Lotauction::class);

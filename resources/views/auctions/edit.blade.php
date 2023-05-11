@@ -1,7 +1,8 @@
-@extends('layout.lots')
+@extends('layouts.lots')
 @section('content')
-    <div>
-        <h1 class="flex h-10 items-center justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl flex-auto">Edit lot</h1>
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 md:px-8">
+        <h1 class="flex h-10 items-center justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl flex-auto">
+            Edit lot</h1>
     </div>
     <div>
         <form action="{{URL::to('auctions') .'/' . $lot->id }}" method="POST"
@@ -50,8 +51,10 @@
             </select>
             <br/>
 
-            <button type="submit" class="button text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-            >Edit</button>
+            <button type="submit"
+                    class="button text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            >Edit
+            </button>
 
         </form>
     </div>

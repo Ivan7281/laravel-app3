@@ -10,6 +10,11 @@ use App\Http\Requests\LotRequest;
 
 class AuctionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Lotauction::class, 'auctions');
+    }
+
     public function index(): View
     {
         $lots = Lotauction::all();
@@ -38,36 +43,32 @@ class AuctionsController extends Controller
         return view('auctions.store', ['lot' => $lot]);
     }
 
-    public function show(string $id): View
+    public function show(Lotauction $lotauction): View
     {
-        $lot = Lotauction::find($id);
-        return view('auctions.show', ['lot' => $lot]);
+        return view('auctions.show', ['lot' => $lotauction]);
     }
 
-    public  function  edit(string $id): View
+    public  function  edit(Lotauction $lotauction): View
     {
         $rate_list = Rate::all();
-        $lot = Lotauction::find($id);
-        return view('auctions.edit', ['lot' => $lot, 'rate_list' => $rate_list]);
+        return view('auctions.edit', ['lot' => $lotauction, 'rate_list' => $rate_list]);
     }
 
-    public function update(LotRequest $request, string $id): View
+    public function update(LotRequest $request, Lotauction $lotauction): View
     {
         $validatedLot = $request->validated();
-        $lot = Lotauction::find($id);
-        $lot->name_lot = $request->input('name_lot');
-        $lot->start_date = $request->input('start_date');
-        $lot->end_date = $request->input('end_date');
-        $lot->starting_price = $request->input('starting_price');
-        $lot->rate_id = $request->input('rate_id');
-        $lot->save();
-        return view('auctions.update', ['lot' => $lot]);
+        $lotauction->name_lot = $request->input('name_lot');
+        $lotauction->start_date = $request->input('start_date');
+        $lotauction->end_date = $request->input('end_date');
+        $lotauction->starting_price = $request->input('starting_price');
+        $lotauction->rate_id = $request->input('rate_id');
+        $lotauction->save();
+        return view('auctions.update', ['lot' => $lotauction]);
     }
 
-    public function destroy(string $id): View
+    public function destroy(Lotauction $lotauction): View
     {
-        $lot = Lotauction::find($id);
-        $lot->delete();
-        return view('auctions.destroy', ['lot' => $lot]);
+        $lotauction->delete();
+        return view('auctions.destroy', ['lot' => $lotauction]);
     }
 }
