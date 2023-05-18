@@ -13,6 +13,10 @@ class RatePolicy
      */
     public function viewAny(?User $user): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -21,6 +25,10 @@ class RatePolicy
      */
     public function view(?User $user, Rate $rate): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -29,6 +37,10 @@ class RatePolicy
      */
     public function create(User $user): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -37,6 +49,10 @@ class RatePolicy
      */
     public function update(User $user, Rate $rate): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -45,6 +61,10 @@ class RatePolicy
      */
     public function delete(User $user, Rate $rate): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -53,6 +73,10 @@ class RatePolicy
      */
     public function restore(User $user, Rate $rate): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 
@@ -61,6 +85,10 @@ class RatePolicy
      */
     public function forceDelete(User $user, Rate $rate): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
         return true;
     }
 }

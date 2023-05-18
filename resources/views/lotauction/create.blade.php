@@ -5,7 +5,7 @@
         <h1 class="flex h-10 items-center justify-center mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl flex-auto">
             Create new lot</h1>
     </div>
-    <form action="{{ route('auctions.store') }}" method="post"
+    <form action="{{ route('lotauction.store') }}" method="post"
           class="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-md my-10 px-1.5 w-full">
 
         @csrf

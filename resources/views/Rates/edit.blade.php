@@ -5,7 +5,7 @@
             Edit rate</h1>
     </div>
     <div>
-        <form action="{{URL::to('auctions') .'/' . $rate->id }}" method="POST"
+        <form action="{{URL::to('lotauction') .'/' . $rate->id }}" method="POST"
               class="max-w-md mx-auto bg-white rounded-xl overflow-hidden shadow-md my-10 px-1.5 w-full">
             @csrf
 

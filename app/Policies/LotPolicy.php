@@ -27,17 +27,37 @@ class LotPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(?User $user): bool
     {
+        if($user == null)
+        {
+            return false;
+        }
+        if($user->role == "superadmin")
+        {
+            return true;
+        }
         return true;
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Lotauction $lotauction): bool
+    public function update(?User $user, Lotauction $lotauction): bool
     {
-        return true;
+        if($user == null)
+        {
+            return false;
+        }
+        if($user->id == $lotauction->create_user_id)
+        {
+            return true;
+        }
+        elseif ($user->role == "superadmin" or $user->role == "editor")
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -45,7 +65,19 @@ class LotPolicy
      */
     public function delete(User $user, Lotauction $lotauction): bool
     {
-        return true;
+        if($user == null)
+        {
+            return false;
+        }
+        if($user->id == $lotauction->create_user_id)
+        {
+            return true;
+        }
+        if ($user->role == "superadmin")
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -53,7 +85,15 @@ class LotPolicy
      */
     public function restore(User $user, Lotauction $lotauction): bool
     {
-        return true;
+        if($user == null)
+        {
+            return false;
+        }
+        if ($user->role == "superadmin")
+        {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -61,6 +101,14 @@ class LotPolicy
      */
     public function forceDelete(User $user, Lotauction $lotauction): bool
     {
-        return true;
+        if($user == null)
+        {
+            return false;
+        }
+        if ($user->role == "superadmin")
+        {
+            return true;
+        }
+        return false;
     }
 }

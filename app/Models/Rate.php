@@ -12,11 +12,13 @@ class Rate extends Model
 
     protected $fillable = [
         'name_customer',
-        'rate_price'
+        'rate_price',
+        'creator_user_id'
     ];
 
     public function lotauctions(): HasMany
     {
         return $this->hasMany(Lotauction::class);
     }
+
 }

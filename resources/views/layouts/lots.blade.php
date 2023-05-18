@@ -21,7 +21,7 @@
                     </div>
                     <div class="hidden sm:ml-6 sm:block">
                         <div class="flex space-x-4">
-                            <a href="{{ route('auctions.store') }}"
+                            <a href="{{ route('lotauction.store') }}"
                                class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                aria-current="page">Auction</a>
                         </div>
