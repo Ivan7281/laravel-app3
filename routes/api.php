@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Resources\LotauctionResource;
+use App\Http\Resources\RateResource;
+use App\Models\Lotauction;
+use App\Models\Rate;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +21,27 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('lotauctions', function ()
+{
+   return LotauctionResource::collection(Lotauction::all());
+});
+Route::get('rate', function ()
+{
+    return RateResource::collection(Rate::all());
+});
+Route::get('lotauctions', function ()
+{
+    return LotauctionResource::collection(Lotauction::paginate(2));
+})->middleware('auth:api');
+Route::get('rate', function ()
+{
+    return RateResource::collection(Rate::paginate());
+})->middleware('auth:api');
+
+Route::get('lotauctions', function () {
+})->middleware(['auth:sanctum', 'abilities:check-status']);
+
+Route::get('rate', function () {
+})->middleware(['auth:sanctum', 'abilities:check-status']);
+

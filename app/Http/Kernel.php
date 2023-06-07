@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -44,6 +45,12 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
     ];
+    protected function schedule(Schedule $schedule): void
+    {
+        $schedule->command('sanctum:prune-expired
+         --hours=24')->daily();
+    }
+
 
     /**
      * The application's middleware aliases.
