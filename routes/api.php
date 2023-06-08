@@ -6,6 +6,7 @@ use App\Http\Resources\LotauctionResource;
 use App\Http\Resources\RateResource;
 use App\Models\Lotauction;
 use App\Models\Rate;
+use App\Http\Controllers\API\AuctionsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('lotauction', AuctionsController::class);
+
+
 Route::get('lotauctions', function ()
 {
    return LotauctionResource::collection(Lotauction::all());
@@ -32,7 +36,7 @@ Route::get('rate', function ()
 });
 Route::get('lotauctions', function ()
 {
-    return LotauctionResource::collection(Lotauction::paginate(2));
+    return LotauctionResource::collection(Lotauction::paginate());
 })->middleware('auth:api');
 Route::get('rate', function ()
 {

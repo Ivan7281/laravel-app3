@@ -17,8 +17,8 @@ class RateResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name_customer' => $this->whenNotNull($this->name_customer),
-            'rate_price' => $this->whenNotNull($this->rate_price),
+            'name_customer' => $this->name_customer,
+            'rate_price' => $this->rate_price,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'creator_user_id' => $this->creator_user_id

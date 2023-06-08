@@ -16,10 +16,10 @@ class LotauctionResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name_lot' => $this->whenNotNull($this->name_lot),
-            'start_date' => $this->whenNotNull($this->start_date),
-            'end_date' => $this->whenNotNull($this->end_date),
-            'starting_price' => $this->whenNotNull($this->starting_price),
+            'name_lot' => $this->name_lot,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'starting_price' => $this->starting_price,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
             'rate_id' => $this->rate_id,
