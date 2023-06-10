@@ -7,6 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class LotauctionResource extends JsonResource
 {
+    public static $wrap = 'lot';
     /**
      * Transform the resource into an array.
      *
